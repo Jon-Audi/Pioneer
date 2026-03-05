@@ -1,0 +1,17 @@
+# deps
+node_modules/
+
+# build output
+.next/
+out/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NOTE: public/animations/*.gif should be committed — they're the app's content
