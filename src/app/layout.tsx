@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Pioneer OEL Gallery',
-  description: 'Pioneer DEH-P7600MP screensaver animation library — all 21 animations from the original Pioneer OEL display.',
+  description: 'Pioneer DEH-P7600MP screensaver animation library — 67 animations including level meters, patterns, and procedural visuals. Includes a virtual head unit showcase.',
   keywords: ['Pioneer', 'DEH-P7600MP', 'OEL', 'screensaver', 'animation', 'ESP32', 'CYD'],
 }
 

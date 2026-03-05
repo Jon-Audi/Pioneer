@@ -5,7 +5,7 @@ import { ANIMATIONS, CATEGORY_LABELS, type Animation, type Category } from '@/li
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
-type FilterKey = 'all' | Category
+type FilterKey = keyof typeof CATEGORY_LABELS
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
 
@@ -146,12 +146,12 @@ export default function Home() {
     return true
   })
 
-  const counts = {
-    all:       ANIMATIONS.length,
-    grayscale: ANIMATIONS.filter(a => a.category === 'grayscale').length,
-    oel:       ANIMATIONS.filter(a => a.category === 'oel').length,
-    bg:        ANIMATIONS.filter(a => a.category === 'bg').length,
-  } as Record<FilterKey, number>
+  const counts = Object.fromEntries(
+    (['all', ...Object.keys(CATEGORY_LABELS).filter(k => k !== 'all')] as FilterKey[]).map(k => [
+      k,
+      k === 'all' ? ANIMATIONS.length : ANIMATIONS.filter(a => a.category === k).length,
+    ])
+  ) as Record<FilterKey, number>
 
   return (
     <>
@@ -185,6 +185,14 @@ export default function Home() {
           <div className="text-muted text-xs font-mono flex-shrink-0 hidden sm:block">
             {visible.length}/{ANIMATIONS.length}
           </div>
+
+          {/* Head Units link */}
+          <a
+            href="/units/"
+            className="flex-shrink-0 px-3 py-1.5 border border-border rounded text-xs font-mono text-muted hover:text-cyan hover:border-cyan transition-colors tracking-wider whitespace-nowrap"
+          >
+            HEAD UNITS
+          </a>
         </div>
 
         {/* Filter tabs */}
